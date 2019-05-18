@@ -4,11 +4,6 @@
 }
 
 @font-face {
-  font-family: 'Akzidenz Grotesk Condensed';
-  src: url('../fonts/Berthold-akzidenz-grotesk-be-condensed.woff');   
-}
-
-@font-face {
   font-family: 'Akzidenz Grotesk Italic';
   src: url('../fonts/Berthold-akzidenz-grotesk-be-medium-italic.woff');   
 }
@@ -105,11 +100,11 @@ h1 {
 }
 
 h2 {
-  font-size: 3.6em;
+  font-size: 3.2em;
   hyphens: auto;
   line-height: 1.7em;
   margin: 0;
-  font-family: 'Akzidenz Grotesk Condensed', 'Helvetica Neue', 'Helvetica', sans-serif;
+  font-family: 'Akzidenz Grotesk Bold', 'Helvetica Neue', 'Helvetica', sans-serif;
 }
 
 .smallSpace {
@@ -130,7 +125,7 @@ h2 {
   }
 
   h2 {
-    font-size: 6vw;
+    font-size: 5vw;
   }
 }
 
@@ -148,7 +143,7 @@ h2 {
   }
 
   h2 {
-    font-size: 5.0em;
+    font-size: 4.0em;
     line-height: 1.5em;
   }
 

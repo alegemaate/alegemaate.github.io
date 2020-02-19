@@ -1,5 +1,5 @@
 # PersonalSite
-![Build](https://github.com/alegemaate/PersonalSite/workflows/Build/badge.svg)
+![Build](https://github.com/alegemaate/PersonalSite/workflows/Build/badge.svg) [![Maintainability](https://api.codeclimate.com/v1/badges/95cb8093023fb9a0f1a2/maintainability)](https://codeclimate.com/github/alegemaate/PersonalSite/maintainability)
 
 Just an about me page using React and Gatsby
 

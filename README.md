@@ -1,4 +1,6 @@
 # PersonalSite
+![Build](https://github.com/alegemaate/PersonalSite/workflows/Build/badge.svg)
+
 Just an about me page using React and Gatsby
 
 ## Installing

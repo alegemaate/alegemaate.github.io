@@ -14,9 +14,10 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const Box = styled.div`
+export const Box = styled.div<{ center?: boolean }>`
   border-top: 3px solid #0f0a01;
-  ${props => (props.center ? "display: flex; align-items: center;" : "")}
+  ${(props): string =>
+    props.center ?? false ? "display: flex; align-items: center;" : ""}
 `;
 
 export const Spacer = styled.div`

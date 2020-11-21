@@ -1,12 +1,13 @@
 import React from "react";
+import type { FC } from "react";
 
 import Layout from "../components/Layout";
-import SEO from "../components/SEO";
+import Seo from "../components/Seo";
 import IndexView from "../components/IndexView";
 
-const IndexPage = () => (
+const IndexPage: FC = () => (
   <Layout>
-    <SEO title="About Allan Legemaate" />
+    <Seo title="About Allan Legemaate" />
     <IndexView />
   </Layout>
 );

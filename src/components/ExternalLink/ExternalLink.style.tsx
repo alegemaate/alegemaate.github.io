@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const LinkStyle = styled.div`
+export const LinkStyle = styled.a`
   font-family: "Akzidenz Grotesk", "Helvetica Neue", "Helvetica", sans-serif;
   background-color: #eaded0;
   display: flex;

@@ -1,6 +1,6 @@
 # Personal Site
 
-![Build](https://github.com/alegemaate/alegemaate.github.io/workflows/Build/badge.svg) [![Maintainability](https://api.codeclimate.com/v1/badges/95cb8093023fb9a0f1a2/maintainability)](https://codeclimate.com/github/alegemaate/alegemaate.github.io/maintainability)
+![Build](https://github.com/alegemaate/alegemaate.github.io/workflows/Build/badge.svg) [![Maintainability](https://api.codeclimate.com/v1/badges/30496ee9ff74a241c05c/maintainability)](https://codeclimate.com/github/alegemaate/alegemaate.github.io/maintainability)
 
 Just an about me [page](http://alegemaate.github.io/) using React and Gatsby
 

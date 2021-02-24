@@ -4,6 +4,7 @@ import type { FC } from "react";
 import Helmet from "react-helmet";
 import { useStaticQuery, graphql } from "gatsby";
 
+// eslint-disable-next-line @typescript-eslint/no-type-alias
 type Meta = React.DetailedHTMLProps<
   React.MetaHTMLAttributes<HTMLMetaElement>,
   HTMLMetaElement
@@ -25,43 +26,41 @@ const generateMeta = ({
   title: string;
   author: string;
   meta: Meta[];
-}): Meta[] => {
-  return [
-    {
-      content: description,
-      name: "description",
-    },
-    {
-      content: title,
-      property: "og:title",
-    },
-    {
-      content: description,
-      property: "og:description",
-    },
-    {
-      content: "website",
-      property: "og:type",
-    },
-    {
-      content: "summary",
-      name: "twitter:card",
-    },
-    {
-      content: author,
-      name: "twitter:creator",
-    },
-    {
-      content: title,
-      name: "twitter:title",
-    },
-    {
-      content: description,
-      name: "twitter:description",
-    },
-    ...meta,
-  ];
-};
+}): Meta[] => [
+  {
+    content: description,
+    name: "description",
+  },
+  {
+    content: title,
+    property: "og:title",
+  },
+  {
+    content: description,
+    property: "og:description",
+  },
+  {
+    content: "website",
+    property: "og:type",
+  },
+  {
+    content: "summary",
+    name: "twitter:card",
+  },
+  {
+    content: author,
+    name: "twitter:creator",
+  },
+  {
+    content: title,
+    name: "twitter:title",
+  },
+  {
+    content: description,
+    name: "twitter:description",
+  },
+  ...meta,
+];
 
 const Seo: FC<{
   description?: string;

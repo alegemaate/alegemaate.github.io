@@ -9,8 +9,6 @@ module.exports = {
     "plugin:@typescript-eslint/all",
     "plugin:react/all",
     "prettier",
-    "prettier/react",
-    "prettier/@typescript-eslint",
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
@@ -25,7 +23,6 @@ module.exports = {
   root: true,
   rules: {
     "@typescript-eslint/naming-convention": "off",
-    "@typescript-eslint/no-type-alias": "off",
     "@typescript-eslint/prefer-readonly-parameter-types": "off",
     camelcase: "off",
     "no-ternary": "off",

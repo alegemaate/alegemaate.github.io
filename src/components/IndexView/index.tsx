@@ -1,8 +1,6 @@
 import React from "react";
 import type { FC } from "react";
 
-import { graphql } from "gatsby";
-
 import { Image } from "../Image";
 
 import { Wrapper, Box } from "./IndexView.style";

@@ -12,13 +12,13 @@ module.exports = {
     "gatsby-plugin-sharp",
     {
       options: {
-        background_color: "#663399",
-        display: "minimal-ui",
+        background_color: "#dbb700",
+        display: "standalone",
         icon: "src/images/favicon.png",
-        name: "gatsby-starter-default",
-        short_name: "starter",
+        name: "Allan Legemaate's Site",
+        short_name: "Allan's Site",
         start_url: "/",
-        theme_color: "#663399",
+        theme_color: "#dbb700",
       },
       resolve: "gatsby-plugin-manifest",
     },

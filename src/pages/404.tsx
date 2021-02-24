@@ -8,7 +8,7 @@ const NotFoundPage: FC = () => (
   <Layout>
     <Seo title="Page Not Found" />
     <h1>{"Page not found!"}</h1>
-    <p>{"You just hit a route that doesn&#39;t exist... the sadness."}</p>
+    <p>{"You just hit a route that doesn't exist... the sadness."}</p>
   </Layout>
 );
 

@@ -12,7 +12,7 @@ export const About: FC = () => (
     <h2>{"Who am I?"}</h2>
     <p>
       {
-        "I am a 3rd year Computer Science student studying at Queen's University."
+        "I am a 5rd year Computer Science student studying at Queen's University."
       }
     </p>
 

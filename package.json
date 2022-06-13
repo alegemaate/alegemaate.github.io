@@ -15,7 +15,7 @@
     "gatsby-plugin-manifest": "^2.1.1",
     "gatsby-plugin-react-helmet": "^3.0.12",
     "gatsby-plugin-sharp": "^2.0.37",
-    "gatsby-plugin-typescript": "^2.7.0",
+    "gatsby-plugin-typescript": "^2.12.1",
     "gatsby-source-filesystem": "^2.0.36",
     "gatsby-transformer-sharp": "^2.1.19",
     "react": "^17.0.1",

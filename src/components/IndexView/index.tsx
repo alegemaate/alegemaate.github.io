@@ -1,21 +1,20 @@
 import React from "react";
-import type { FC } from "react";
-
-import { Image } from "../Image";
+import { StaticImage } from "gatsby-plugin-image";
 
 import { Wrapper, Box } from "./IndexView.style";
 import { Pages } from "./Pages";
 import { About } from "./About";
 
-const IndexPage: FC = () => (
+const IndexPage: React.FC = () => (
   <Wrapper>
     <Box center>
       <h1>{"Allan Legemaate"}</h1>
     </Box>
 
-    <Box>
-      <Image
+    <Box noPad>
+      <StaticImage
         alt="Image of Allan Legemaate"
+        src="../../images/me.jpg"
         title="Yes, I know this theme looks like nofrills(tm)"
       />
     </Box>

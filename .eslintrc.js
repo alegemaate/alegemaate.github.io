@@ -10,6 +10,7 @@ module.exports = {
     "plugin:react/all",
     "prettier",
   ],
+  ignorePatterns: ["public/"],
   parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaFeatures: {
@@ -24,6 +25,7 @@ module.exports = {
   rules: {
     "@typescript-eslint/naming-convention": "off",
     "@typescript-eslint/prefer-readonly-parameter-types": "off",
+    "@typescript-eslint/no-magic-numbers": "off",
     camelcase: "off",
     "no-ternary": "off",
     "one-var": "off",
@@ -34,6 +36,7 @@ module.exports = {
     "react/jsx-curly-brace-presence": "off",
     "react/jsx-filename-extension": ["error", { extensions: [".tsx", ".jsx"] }],
     "react/prop-types": "off",
+    "react/require-default-props": "off",
     "sort-imports": "off",
   },
   settings: {

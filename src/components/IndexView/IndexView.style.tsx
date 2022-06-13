@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-column-gap: 36px;
 
   @media (max-width: 800px) {
     grid-template-columns: 1fr;
@@ -14,10 +13,11 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const Box = styled.div<{ center?: boolean }>`
-  border-top: 3px solid #0f0a01;
+export const Box = styled.div<{ center?: boolean; noPad?: boolean }>`
+  border-top: 10px solid #0f0a01;
   ${(props): string =>
     props.center ?? false ? "display: flex; align-items: center;" : ""}
+  ${(props): string => (props.noPad ?? false ? "" : "padding: 24px;")}
 `;
 
 export const Spacer = styled.div`

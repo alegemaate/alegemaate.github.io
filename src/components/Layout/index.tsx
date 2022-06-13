@@ -1,9 +1,12 @@
 import React from "react";
-import type { FC } from "react";
 
 import "./layout.css";
 
-const Layout: FC = ({ children }) => (
+interface LayoutProps {
+  children: React.ReactNode;
+}
+
+const Layout: React.FC<LayoutProps> = ({ children }) => (
   <div
     style={{
       margin: `0 auto`,

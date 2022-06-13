@@ -2,16 +2,19 @@ import styled from "styled-components";
 
 export const LinkStyle = styled.a`
   font-family: "Akzidenz Grotesk", "Helvetica Neue", "Helvetica", sans-serif;
-  background-color: #eaded0;
+  background-color: #ffeccc;
   display: flex;
   padding: 20px;
   align-items: center;
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  border-radius: 5px;
 
   &:hover {
     font-family: "Akzidenz Grotesk Italic", "Helvetica Neue", "Helvetica",
       sans-serif;
-    background-color: #b7c7bd;
+    background-color: #514538;
+    color: #ffffff;
   }
 `;
 

@@ -1,12 +1,17 @@
 import React from "react";
-import type { FC } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 import { LinkStyle, LinkText, LinkIcon } from "./ExternalLink.style";
+import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 
-const ExternalLink: FC<{ text: string; icon: IconProp; src: string }> = ({
+interface ExternalLinkProps {
+  text: string;
+  icon: IconDefinition;
+  src: string;
+}
+
+const ExternalLink: React.FC<ExternalLinkProps> = ({
   text = "Link",
   icon,
   src = "",

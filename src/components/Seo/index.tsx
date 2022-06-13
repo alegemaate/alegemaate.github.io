@@ -1,8 +1,7 @@
 import React from "react";
-import type { FC } from "react";
 
 import Helmet from "react-helmet";
-import { useStaticQuery, graphql } from "gatsby";
+import { graphql, useStaticQuery } from "gatsby";
 
 // eslint-disable-next-line @typescript-eslint/no-type-alias
 type Meta = React.DetailedHTMLProps<
@@ -62,12 +61,19 @@ const generateMeta = ({
   ...meta,
 ];
 
-const Seo: FC<{
+interface SeoProps {
   description?: string;
   lang?: string;
   meta?: Meta[];
   title?: string;
-}> = ({ description = "", lang = "en", meta = [], title }) => {
+}
+
+const Seo: React.FC<SeoProps> = ({
+  description = "",
+  lang = "en",
+  meta = [],
+  title,
+}) => {
   const { site } = useStaticQuery<MetaQuery>(
     // eslint-disable-next-line @typescript-eslint/no-confusing-void-expression
     graphql`

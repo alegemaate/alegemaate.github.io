@@ -1,5 +1,4 @@
 import React from "react";
-import type { FC } from "react";
 
 import { faGamepad, faVolumeUp } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faSoundcloud } from "@fortawesome/free-brands-svg-icons";
@@ -8,7 +7,7 @@ import ExternalLink from "../ExternalLink";
 
 import { Box, Spacer } from "./IndexView.style";
 
-export const Pages: FC = () => (
+export const Pages: React.FC = () => (
   <Box>
     <h2>{"My Pages"}</h2>
     <ExternalLink

@@ -31,10 +31,19 @@ module.exports = {
       },
       resolve: "gatsby-plugin-typescript",
     },
+    {
+      options: {
+        pluginConfig: {
+          head: false,
+        },
+        trackingIds: ["G-CLB2M8CWMS"],
+      },
+      resolve: "gatsby-plugin-google-gtag",
+    },
   ],
   siteMetadata: {
     author: "alegemaate@gmail.com",
-    description: "Just a basic page",
+    description: "Allan Legemaate's personal site",
     title: "Allan Legemaate's Page",
   },
 };

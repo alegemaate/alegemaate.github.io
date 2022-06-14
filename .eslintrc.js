@@ -24,11 +24,9 @@ module.exports = {
   root: true,
   rules: {
     "@typescript-eslint/naming-convention": "off",
-    "@typescript-eslint/prefer-readonly-parameter-types": "off",
     "@typescript-eslint/no-magic-numbers": "off",
-    camelcase: "off",
-    "no-ternary": "off",
-    "one-var": "off",
+    "@typescript-eslint/prefer-readonly-parameter-types": "off",
+
     "react/function-component-definition": [
       "error",
       { namedComponents: "arrow-function" },
@@ -37,7 +35,12 @@ module.exports = {
     "react/jsx-filename-extension": ["error", { extensions: [".tsx", ".jsx"] }],
     "react/prop-types": "off",
     "react/require-default-props": "off",
+
+    camelcase: "off",
+    "no-ternary": "off",
+    "one-var": "off",
     "sort-imports": "off",
+    "sort-keys": "off",
   },
   settings: {
     react: {

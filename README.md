@@ -8,7 +8,7 @@ Just an about me [page](http://alegemaate.github.io/) using React and Gatsby
 
 Clone repo and run `yarn` to set up node_modules
 
-Run `yarn start` to run a test server on port 8000 and `yarn build` to build a static webpage
+Run `yarn start` to run a development server on port 8000 and `yarn build` to build as a static webpage
 
 ## Major Packages Used
 

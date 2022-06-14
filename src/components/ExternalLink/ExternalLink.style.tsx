@@ -1,6 +1,7 @@
+import { OutboundLink } from "gatsby-plugin-google-gtag";
 import styled from "styled-components";
 
-export const LinkStyle = styled.a`
+export const LinkStyle = styled(OutboundLink)`
   font-family: "Akzidenz Grotesk", "Helvetica Neue", "Helvetica", sans-serif;
   background-color: #ffeccc;
   display: flex;

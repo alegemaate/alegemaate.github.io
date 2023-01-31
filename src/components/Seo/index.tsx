@@ -71,7 +71,7 @@ interface SeoProps {
 const Seo: React.FC<SeoProps> = ({
   description = "",
   lang = "en",
-  meta = [],
+  meta,
   title,
 }) => {
   const { site } = useStaticQuery<MetaQuery>(
@@ -95,7 +95,7 @@ const Seo: React.FC<SeoProps> = ({
       meta={generateMeta({
         author: site.siteMetadata.author,
         description: description || site.siteMetadata.description,
-        meta,
+        meta: meta ?? [],
         title: site.siteMetadata.author,
       })}
       title={title}

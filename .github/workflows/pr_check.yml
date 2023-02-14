@@ -1,14 +1,14 @@
-name: Build
+name: pr_check
 
 on:
   pull_request:
-    branches:
-      - main
+    branches: [master]
+
+env:
+  CARGO_TERM_COLOR: always
 
 jobs:
-  deploy:
-    name: "Deploy Site"
-
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -30,9 +30,5 @@ jobs:
       - name: Build
         run: trunk build
 
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4.3.3
-        with:
-          branch: gh-pages
-          folder: dist
-          single-commit: true
+      - name: Run tests
+        run: cargo test --verbose

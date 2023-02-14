@@ -1,21 +1,31 @@
 @font-face {
   font-family: "Akzidenz Grotesk Bold";
-  src: url("/fonts/Berthold-akzidenz-grotesk-be-extra-bold-condensed.woff");
+  src: local("Akzidenz Grotesk"), local("Helvetica Neue"), local("Helvetica"),
+    url("/fonts/Berthold-akzidenz-grotesk-be-extra-bold-condensed.woff")
+      format("woff2");
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Akzidenz Grotesk Italic";
-  src: url("/fonts/Berthold-akzidenz-grotesk-be-medium-italic.woff");
+  src: local("Akzidenz Grotesk"), local("Helvetica Neue"), local("Helvetica"),
+    url("/fonts/Berthold-akzidenz-grotesk-be-medium-italic.woff")
+      format("woff2");
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Akzidenz Grotesk";
-  src: url("/fonts/Berthold-akzidenz-grotesk-be-regular.woff");
+  src: local("Akzidenz Grotesk"), local("Helvetica Neue"), local("Helvetica"),
+    url("/fonts/Berthold-akzidenz-grotesk-be-regular.woff") format("woff2");
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Akzidenz Grotesk Light";
-  src: url("/fonts/Berthold-akzidenz-grotesk-be-light.woff");
+  src: local("Akzidenz Grotesk"), local("Helvetica Neue"), local("Helvetica"),
+    url("/fonts/Berthold-akzidenz-grotesk-be-light.woff") format("woff2");
+  font-display: swap;
 }
 
 html,

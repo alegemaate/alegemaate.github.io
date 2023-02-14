@@ -42,7 +42,7 @@ pub fn App() -> Html {
                 <h1>{ "Allan Legemaate" }</h1>
             </div>
             <div class={classes!("grid-item", "grid-item__image")}>
-                <img title="Hey it's me" alt="Image of Allan Legemaate" width="700" height="700" src="https://alegemaate.com/static/0b772996d146b1899024d9c0a5ffbf89/ec00d/me.webp" />
+                <img title="Hey it's me" alt="Image of Allan Legemaate" width="700" height="700" src="/me.webp" />
             </div>
             <div class={classes!("grid-item", "grid-item__padded")}>
                 <AboutPanel/>

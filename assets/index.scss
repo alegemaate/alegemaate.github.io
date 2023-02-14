@@ -1,33 +1,3 @@
-@font-face {
-  font-family: "Akzidenz Grotesk Bold";
-  src: local("Akzidenz Grotesk"), local("Helvetica Neue"), local("Helvetica"),
-    url("/fonts/Berthold-akzidenz-grotesk-be-extra-bold-condensed.woff")
-      format("woff2");
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Akzidenz Grotesk Italic";
-  src: local("Akzidenz Grotesk"), local("Helvetica Neue"), local("Helvetica"),
-    url("/fonts/Berthold-akzidenz-grotesk-be-medium-italic.woff")
-      format("woff2");
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Akzidenz Grotesk";
-  src: local("Akzidenz Grotesk"), local("Helvetica Neue"), local("Helvetica"),
-    url("/fonts/Berthold-akzidenz-grotesk-be-regular.woff") format("woff2");
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Akzidenz Grotesk Light";
-  src: local("Akzidenz Grotesk"), local("Helvetica Neue"), local("Helvetica"),
-    url("/fonts/Berthold-akzidenz-grotesk-be-light.woff") format("woff2");
-  font-display: swap;
-}
-
 html,
 body {
   height: 100%;

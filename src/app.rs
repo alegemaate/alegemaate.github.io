@@ -30,7 +30,7 @@ pub fn App() -> Html {
             icon: html! {<FreesoundIcon />},
         },
         ExternalLinkProps {
-            href: "https://adsgames.net",
+            href: "https://www.adsgames.net",
             text: "adsgames",
             icon: html! {<AdsGamesIcon/>},
         },

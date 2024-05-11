@@ -15,18 +15,23 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: install toolchain
-        uses: actions-rs/toolchain@v1
+      - name: Restore cache
+        uses: actions/cache@v3
         with:
-          toolchain: stable
-          target: wasm32-unknown-unknown
-          override: true
-          profile: minimal
+          path: ~/.cargo
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.toml') }}-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.toml') }}
+            ${{ runner.os }}-cargo
 
       - name: Install trunk
-        uses: jetli/trunk-action@v0.4.0
+        uses: jetli/trunk-action@v0.5.0
         with:
-          version: "latest"
+          version: "v0.20.1"
+
+      - name: Add wasm target
+        run: |
+          rustup target add wasm32-unknown-unknown
 
       - name: Build
         run: trunk build

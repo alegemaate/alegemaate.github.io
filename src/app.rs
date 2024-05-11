@@ -21,8 +21,8 @@ pub fn App() -> Html {
       icon: html! {<GithubIcon/>},
     },
     ExternalLinkProps {
-      href: String::from("https://soundcloud.com/allan-legemaate"),
-      text: String::from("soundcloud"),
+      href: String::from("https://www.frequency303.com"),
+      text: String::from("music"),
       icon: html! {<SoundcloudIcon/>},
     },
     ExternalLinkProps {

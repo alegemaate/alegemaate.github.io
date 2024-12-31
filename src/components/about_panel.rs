@@ -5,7 +5,7 @@ pub fn AboutPanel() -> Html {
   html! {
     <div class={classes!("about")}>
       <h2>{"Who am I?"}</h2>
-      <p>{"I am a 26 year old Computer Science graduate from Queen's University."}</p>
+      <p>{"I am a 27 year old Computer Science graduate from Queen's University."}</p>
       <h2>{"What do I do?"}</h2>
       <p>{"I am currently working as an Engineering Lead at Adeptmind. In my spare time I make games, study plants and produce music."}</p>
       <h2>{"Contact me"}</h2>

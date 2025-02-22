@@ -2,7 +2,7 @@ use yew::{classes, function_component, html, Html};
 
 #[function_component]
 pub fn Footer() -> Html {
-  const YEAR: i32 = 2023;
+  const YEAR: i32 = 2025;
 
   html! {
     <footer>

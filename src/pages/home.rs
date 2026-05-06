@@ -44,7 +44,7 @@ pub fn Home() -> Html {
         <h1>{ "Allan Legemaate" }</h1>
       </div>
       <div class={classes!("grid-item", "grid-item__image", "grid-item__primary-image")}>
-        <img title="Hey it's me" alt="Image of Allan Legemaate" width="700" height="700" src="/me.png" />
+        <img title="Hey it's me" alt="Image of Allan Legemaate" width="700" height="700" src="/me.jpg" />
       </div>
       <div class={classes!("grid-item", "grid-item__padded")}>
         <AboutPanel/>

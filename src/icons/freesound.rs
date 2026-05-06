@@ -1,6 +1,6 @@
-use yew::{function_component, html, Html};
+use yew::{Html, component, html};
 
-#[function_component]
+#[component]
 pub fn FreesoundIcon() -> Html {
   html! {
     <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="volume-high" class="svg-inline--fa fa-volume-high " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">

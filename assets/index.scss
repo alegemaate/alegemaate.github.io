@@ -131,11 +131,18 @@ p {
 
 .grid-item {
   border-top: 10px solid rgb(15, 10, 1);
+  min-width: 0;
 
   &__title {
     display: flex;
     align-items: center;
     padding: 24px;
+
+    &--small {
+      h1 {
+        font-size: 2.4rem;
+      }
+    }
   }
 
   &__image {
@@ -159,6 +166,12 @@ p {
   @media (max-width: 768px) {
     grid-column: span 1;
   }
+}
+
+.grid-item__primary-image {
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  filter: grayscale(100%);
 }
 
 .contact {
@@ -188,4 +201,223 @@ p {
 .about {
   font-size: 1.5rem;
   margin: 0;
+}
+
+.blog-link {
+  display: inline-block;
+  font-family: "Akzidenz Grotesk", "Helvetica Neue", "Helvetica", sans-serif;
+  font-size: 1.4rem;
+  color: #0f0a01;
+  text-decoration: underline;
+
+  &:hover {
+    color: #514538;
+  }
+}
+
+.internal-links {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+  padding: 4px 0;
+}
+
+.blog-back {
+  display: inline-block;
+  font-family: "Akzidenz Grotesk", "Helvetica Neue", "Helvetica", sans-serif;
+  font-size: 1.1rem;
+  color: #0f0a01;
+  margin-bottom: 16px;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.blog-list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+
+  &__item {
+    border-top: 1px solid rgba(15, 10, 1, 0.15);
+    padding-top: 16px;
+
+    &:first-child {
+      border-top: none;
+      padding-top: 0;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: inherit;
+
+    &:hover .blog-list__title {
+      color: #514538;
+    }
+  }
+
+  &__title {
+    margin: 0 0 4px 0;
+    font-size: 1.8rem;
+    transition: color 0.15s ease-in-out;
+  }
+
+  &__date {
+    font-family: "Akzidenz Grotesk Light", "Helvetica Neue", "Helvetica",
+      sans-serif;
+    font-size: 1rem;
+    color: #514538;
+    margin-bottom: 8px;
+  }
+
+  &__description {
+    font-family: "Akzidenz Grotesk Light", "Helvetica Neue", "Helvetica",
+      sans-serif;
+    font-size: 1.2rem;
+    margin: 0;
+  }
+}
+
+.blog-post__date {
+  font-family: "Akzidenz Grotesk Light", "Helvetica Neue", "Helvetica",
+    sans-serif;
+  font-size: 1rem;
+  color: #514538;
+  margin-bottom: 8px;
+}
+
+.blog-post__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.blog-post__tag {
+  font-family: "Akzidenz Grotesk Light", "Helvetica Neue", "Helvetica",
+    sans-serif;
+  font-size: 0.85rem;
+  background: #f4ede0;
+  color: #514538;
+  padding: 2px 10px;
+  border-radius: 999px;
+}
+
+.blog-post__author {
+  font-family: "Akzidenz Grotesk Light", "Helvetica Neue", "Helvetica",
+    sans-serif;
+  font-size: 1rem;
+  color: #514538;
+  margin-bottom: 16px;
+}
+
+.markdown {
+  font-family: "Akzidenz Grotesk Light", "Helvetica Neue", "Helvetica",
+    sans-serif;
+  font-size: 1.15rem;
+  line-height: 1.6;
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: "Akzidenz Grotesk Bold", "Helvetica Neue", "Helvetica", sans-serif;
+    margin-top: 1.5em;
+    margin-bottom: 0.4em;
+    font-weight: 900;
+  }
+
+  strong,
+  b {
+    font-family: "Akzidenz Grotesk Bold", "Helvetica Neue", "Helvetica",
+      sans-serif;
+    font-weight: 900;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  h3 {
+    font-size: 1.4rem;
+  }
+
+  p {
+    margin: 0.8em 0;
+  }
+
+  a {
+    color: #0f0a01;
+    text-decoration: underline;
+
+    &:hover {
+      color: #514538;
+    }
+  }
+
+  ul,
+  ol {
+    padding-left: 1.4em;
+  }
+
+  li {
+    margin: 0.2em 0;
+  }
+
+  blockquote {
+    border-left: 4px solid #d9a057;
+    margin: 1em 0;
+    padding: 0.2em 1em;
+    color: #514538;
+    background: #fff7e6;
+  }
+
+  code {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.95em;
+    background: #f4ede0;
+    padding: 0.1em 0.35em;
+    border-radius: 3px;
+  }
+
+  pre {
+    background: #f6f8fa;
+    padding: 12px 14px;
+    border-radius: 6px;
+    overflow-x: auto;
+    border: 1px solid #e3e1dc;
+
+    code {
+      background: transparent;
+      padding: 0;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1em 0;
+
+    th,
+    td {
+      border: 1px solid #e3e1dc;
+      padding: 6px 10px;
+      text-align: left;
+    }
+
+    th {
+      background: #f4ede0;
+    }
+  }
+
+  .katex-display {
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0.4em 0;
+  }
 }

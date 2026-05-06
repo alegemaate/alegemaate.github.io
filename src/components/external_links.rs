@@ -1,12 +1,12 @@
 use crate::components::external_link::{ExternalLink, ExternalLinkProps};
-use yew::{classes, function_component, html, Html, Properties};
+use yew::{Html, Properties, classes, component, html};
 
 #[derive(Properties, PartialEq)]
 pub struct ExternalLinksProps {
   pub links: Vec<ExternalLinkProps>,
 }
 
-#[function_component]
+#[component]
 pub fn ExternalLinks(props: &ExternalLinksProps) -> Html {
   let links = props
     .links

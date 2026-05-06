@@ -1,6 +1,6 @@
-use yew::{function_component, html, Html};
+use yew::{Html, component, html};
 
-#[function_component]
+#[component]
 pub fn SoundcloudIcon() -> Html {
   html! {
     <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="soundcloud" class="svg-inline--fa fa-soundcloud " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">

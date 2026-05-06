@@ -41,6 +41,9 @@ jobs:
       - name: Add nojekyll
         run: touch dist/.nojekyll
 
+      - name: SPA fallback
+        run: cp dist/index.html dist/404.html
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 

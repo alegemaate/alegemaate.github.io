@@ -1,8 +1,8 @@
-use yew::{classes, function_component, html, Html};
+use yew::{Html, classes, component, html};
 
-#[function_component]
+#[component]
 pub fn Footer() -> Html {
-  const YEAR: i32 = 2025;
+  const YEAR: i32 = 2026;
 
   html! {
     <footer>

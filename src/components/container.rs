@@ -1,4 +1,4 @@
-use yew::{classes, function_component, html, Children, Html, Properties};
+use yew::{Children, Html, Properties, classes, component, html};
 
 use crate::components::footer::Footer;
 
@@ -7,7 +7,7 @@ pub struct ContainerProps {
   pub children: Children,
 }
 
-#[function_component]
+#[component]
 pub fn Container(props: &ContainerProps) -> Html {
   html! {
     <div class={classes!("container")}>

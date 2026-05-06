@@ -1,4 +1,4 @@
-use yew::{classes, function_component, html, Html, Properties};
+use yew::{Html, Properties, classes, component, html};
 
 #[derive(Properties, PartialEq)]
 pub struct ExternalLinkProps {
@@ -7,7 +7,7 @@ pub struct ExternalLinkProps {
   pub icon: Html,
 }
 
-#[function_component]
+#[component]
 pub fn ExternalLink(props: &ExternalLinkProps) -> Html {
   let text = format!("/{}/", props.text);
 

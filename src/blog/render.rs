@@ -1,9 +1,14 @@
 use pulldown_cmark::{CodeBlockKind, Event, Options, Parser, Tag, TagEnd, html};
-use wasm_bindgen::prelude::*;
-use wasm_bindgen::{JsCast, JsValue};
-use web_sys::Element;
 use yew::prelude::*;
 
+#[cfg(target_arch = "wasm32")]
+use wasm_bindgen::prelude::*;
+#[cfg(target_arch = "wasm32")]
+use wasm_bindgen::{JsCast, JsValue};
+#[cfg(target_arch = "wasm32")]
+use web_sys::Element;
+
+#[cfg(target_arch = "wasm32")]
 #[wasm_bindgen]
 extern "C" {
   #[wasm_bindgen(js_namespace = ["window", "katex"], js_name = render)]
@@ -144,6 +149,7 @@ pub fn Markdown(props: &MarkdownProps) -> Html {
   let node_ref = use_node_ref();
   let html_string = render_to_html(&props.source);
 
+  #[cfg(target_arch = "wasm32")]
   {
     let node_ref = node_ref.clone();
     let dep = html_string.clone();
@@ -195,6 +201,7 @@ pub fn Markdown(props: &MarkdownProps) -> Html {
   }
 }
 
+#[cfg(target_arch = "wasm32")]
 fn init_jsxgraph_blocks(root: &Element) {
   let Ok(blocks) = root.query_selector_all("pre.jsxgraph-source[data-jxg-id]") else {
     return;

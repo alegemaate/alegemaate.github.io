@@ -1,8 +1,8 @@
 mod app;
-mod blog;
+pub mod blog;
 mod components;
 mod icons;
 mod pages;
-mod route;
+pub mod route;
 
 pub use app::*;

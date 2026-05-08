@@ -5,6 +5,19 @@
     <link data-trunk rel="copy-file" href="assets/favicon.png" />
     <link data-trunk rel="copy-dir" href="assets/fonts" />
     <link data-trunk rel="copy-file" href="assets/me.jpg" />
+    <link data-trunk rel="copy-file" href="assets/404.html" />
+    <script>
+      // Companion to assets/404.html: if we landed via the GitHub Pages
+      // SPA redirect (`/?p=/some/path`), restore the real URL before Yew
+      // mounts so client-side routing picks the correct page.
+      (function () {
+        var q = window.location.search;
+        if (q && q.indexOf("?p=") === 0) {
+          var path = decodeURIComponent(q.slice(3));
+          window.history.replaceState(null, "", path + window.location.hash);
+        }
+      })();
+    </script>
 
     <link rel="icon" type="image/png" href="favicon.png" />
     <link rel="canonical" href="https://alegemaate.com" />
@@ -125,5 +138,5 @@
       }
     </style>
   </head>
-  <body></body>
+  <body><div id="app"></div></body>
 </html>

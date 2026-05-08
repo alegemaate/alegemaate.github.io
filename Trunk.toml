@@ -1,0 +1,12 @@
+[[hooks]]
+stage = "post_build"
+command = "sh"
+command_arguments = [
+  "-c",
+  "cargo run --release --quiet --bin ssg --features ssg -- \"$TRUNK_STAGING_DIR\"",
+]
+
+[[hooks]]
+stage = "post_build"
+command = "sh"
+command_arguments = ["tools/build-sitemap.sh"]

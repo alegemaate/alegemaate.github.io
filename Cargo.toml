@@ -7,7 +7,7 @@ readme = "README.md"
 repository = "https://github.com/alegemaate/alegemaate.github.io"
 
 [dependencies]
-yew = { version = "0.23", features = ["csr"] }
+yew = { version = "0.23", features = ["csr", "ssr", "hydration"] }
 yew-router = "0.20"
 pulldown-cmark = { version = "0.13", default-features = false, features = ["html"] }
 wasm-bindgen = "0.2"
@@ -20,3 +20,16 @@ web-sys = { version = "0.3", features = [
   "Node",
   "NodeList",
 ] }
+tokio = { version = "1", features = ["rt", "macros"], optional = true }
+
+[features]
+ssg = ["dep:tokio"]
+
+[[bin]]
+name = "router"
+path = "src/bin/router.rs"
+
+[[bin]]
+name = "ssg"
+path = "src/bin/ssg.rs"
+required-features = ["ssg"]

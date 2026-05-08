@@ -8,5 +8,5 @@ command_arguments = [
 
 [[hooks]]
 stage = "post_build"
-command = "sh"
+command = "bash"
 command_arguments = ["tools/build-sitemap.sh"]

@@ -28,12 +28,12 @@ async fn main() {
     ("/".into(), dist.join("index.html"), DEFAULT_DESCRIPTION.into()),
     (
       "/projects".into(),
-      dist.join("projects/index.html"),
+      dist.join("projects.html"),
       "Projects and open-source work by Allan Legemaate.".into(),
     ),
     (
       "/blog".into(),
-      dist.join("blog/index.html"),
+      dist.join("blog.html"),
       "Writing by Allan Legemaate on software, audio, and side projects.".into(),
     ),
   ];
@@ -45,7 +45,7 @@ async fn main() {
     };
     routes.push((
       format!("/blog/{}", post.slug),
-      dist.join(format!("blog/{}/index.html", post.slug)),
+      dist.join(format!("blog/{}.html", post.slug)),
       description,
     ));
   }

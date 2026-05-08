@@ -11,10 +11,29 @@
       // SPA redirect (`/?p=/some/path`), restore the real URL before Yew
       // mounts so client-side routing picks the correct page.
       (function () {
+        function normalize(p) {
+          return p.length > 1 && p.endsWith("/") ? p.replace(/\/+$/, "") : p;
+        }
         var q = window.location.search;
         if (q && q.indexOf("?p=") === 0) {
-          var path = decodeURIComponent(q.slice(3));
-          window.history.replaceState(null, "", path + window.location.hash);
+          var raw = decodeURIComponent(q.slice(3));
+          var qIdx = raw.indexOf("?");
+          var path = qIdx === -1 ? raw : raw.slice(0, qIdx);
+          var rest = qIdx === -1 ? "" : raw.slice(qIdx);
+          window.history.replaceState(
+            null,
+            "",
+            normalize(path) + rest + window.location.hash
+          );
+        } else if (window.location.pathname !== "/") {
+          var p = normalize(window.location.pathname);
+          if (p !== window.location.pathname) {
+            window.history.replaceState(
+              null,
+              "",
+              p + window.location.search + window.location.hash
+            );
+          }
         }
       })();
     </script>

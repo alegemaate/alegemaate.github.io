@@ -1,24 +1,24 @@
 ---
 title: Scanned Synthesis using a One-Dimensional String
 date: 2026-05-05
-description: Diving into Scanned Synthesis, a powerful and underexplored audio synthesis and performance technique.
+description: Diving into Scanned Synthesis, a powerful and under-explored audio synthesis and performance technique.
 ---
 
 Scanned synthesis is not something that gets a lot of attention in a world dominated by subtractive, wavetable, and additive synthesis. To me, this makes it all the more interesting as there is a lot to explore in terms of sound design and performance techniques. Conceptually, it is one of the most elegant synthesis techniques that I have come across.
 
 At its core, scanned synthesis is a physical modelling technique that simulates the behaviour of a slowly vibrating object (such as a string or a membrane) and then "scans" it periodically to produce sound. The scanning process involves sampling the state of the vibrating object at regular intervals along a path that is independent of the physical simulation to produce a desired pitch.
 
-Timbre is instead determined by the physical properties of the vibrating object such as: mass, stiffness, and damping. By changing these properties, a wide variety of sounds can be produced that are difficult or impossible with other synthesis techniques.
+Timbre is instead determined by the physical properties of the vibrating object such as mass, stiffness, and damping. By changing these properties, a wide variety of sounds can be produced that are difficult or impossible with other synthesis techniques.
 
 Since scanned synthesis separates pitch from timbre, and does not define the underlying model, it allows arbitrary models to be selected. One relatively simple model is a one-dimensional string [Verplank et al. 2001].
 
 ## One-Dimensional String
 
-Imagine you have a flexible string that is connected in a loop. The string is a series of masses each connected to two neighbours by springs. Additionally (and physically impossibly) each segment is connected to a fixed point (ground) by a spring. If you pluck the string, waves will propagate along it and create sound. This is the basic idea of scanned synthesis.
+Imagine a flexible string connected in a loop. The string is made up of a series of masses, each connected to its two neighbours by springs. Additionally (and physically impossibly) each mass is connected to a fixed reference point by a spring and a damper. If you pluck the string, waves propagate along it, interacting with each other to create complex vibrations. In scanned synthesis, that shape is then scanned periodically to produce the audible waveform.
 
-When a string is excited by an external force, the waves that propigate along it are determined by the physical properties of the string, such as the mass of each node and the stiffness of the springs. These comply to newtonian physics, so can be easily conceptualized. This gives it a unique character that is difficult to achieve with other synthesis techniques. By changing the properties of the string, we can create a wide variety of sounds.
+When a string is excited by an external force, the waves that propagate along it are determined by the physical properties of the string, such as the mass of each node, the stiffness of the springs, and the damping effects of the dampers. These obey Newton's laws, so can be easily conceptualised using concepts from the real world. This gives it a unique character that is difficult to achieve with other synthesis techniques. By changing the properties of the string, we can create a wide variety of sounds.
 
-The behaviour of the string can be described by the following partial differential equation, which is derived from Newton's second law and Hooke's law:
+A continuous analogue of this model can be written as a damped wave equation with an additional restoring term to ground. This is based on Hooke's law and Newton's second law:
 
 $$
 \frac{\partial^2 u}{\partial t^2} = c^2 \frac{\partial^2 u}{\partial x^2} - \alpha \frac{\partial u}{\partial t} - \beta u
@@ -27,11 +27,11 @@ $$
 Where:
 
 - $u(x, t)$ is the displacement of the string at position $x$ and time $t$.
-- $c$ is the wave speed, which is determined by the stiffness to neighbours and the mass of the string.
-- $\alpha$ is the damping coefficient, which is determined by the damping to earth.
-- $\beta$ is the stiffness to earth coefficient.
+- $c$ is the wave speed, which is related to the stiffness between neighbouring masses and the mass of each node.
+- $\alpha$ is an effective damping coefficient, related to the damping-to-earth coefficient and mass.
+- $\beta$ is an effective restoring coefficient, related to the stiffness-to-earth coefficient and mass.
 
-For simulation purposes we are interested in the discrete version of this equation, which can be expressed as:
+For simulation purposes, we are interested in the discrete version of this equation, which can be expressed as:
 
 $$
 x_i'' = \frac{( k_n (x_{i-1} - 2x_i + x_{i+1}) - k_e x_i - c_e x_i')}{m}
@@ -43,9 +43,9 @@ Where:
 
 - **Stiffness to Neighbours $k_n$**: The stiffness of the springs connecting each mass to the neighbouring masses. This determines how much the string resists deformation and thus how quickly waves propagate along it.
 
-- **Damping to Earth $c_e$**: The damping of the springs connecting each mass to the ground. This determines how much energy is lost as the string vibrates, affecting the sustain and decay of the sound.
+- **Damping to Earth $c_e$**: The damping coefficient of the dampers connecting each mass to the ground. This determines how much energy is lost as the string vibrates, affecting the sustain and decay of the sound.
 
-- **Stiffness to Earth $k_e$**: The stiffness of the springs connecting each mass to the ground. This determines how much force is applied on the mass to return it to its resting position (usually position 0).
+- **Stiffness to Earth $k_e$**: The stiffness of the springs connecting each mass to the ground. This determines how much force is applied to the mass to return it to its resting position (usually position 0).
 
 - **Displacement $x_i$**: The current position of each node on the string, which changes over time as the string vibrates.
 
@@ -312,25 +312,29 @@ fn update_string(
 }
 ```
 
+> Note that in the visualisation above, you cannot see the first and last node being connected. However, they are connected in the simulation. Try dragging the first or last node to see the propagation of the wave around the loop.
+
 ## Excitation
 
-The string model is static at rest, so it must be excited by an external force to produce sound. In the example above, this is a gesture with the mouse acting on a single node. For a basic use case, this may be intresting enough however we can push it further.
+The string model is static at rest, so it must be excited by an external force to produce sound. In the example above, this is a gesture with the mouse acting on a single node. For a basic use case, this may be interesting enough. However, we can push it further.
 
 As a method of excitation, one can vary the force applied, the duration of the force, or the location of the force. The way the string is excited will affect the resulting sound, allowing for a wide range of expressive possibilities.
 
 Some ways I can imagine exciting the string include:
 
-**Simple Pluck**: A simple pluck can be simulated by applying an instantaneous force to a single node on the string.
+**Single Node Displacement**: Simulated by moving a single node away from the rest and then releasing it.
+
+**Single Node Force**: Simulated by applying a short force impulse to a single node.
 
 **Hammering Motion**: A hammering motion can be simulated by applying a force to a node as a function of time, such as a short burst of force followed by a release.
 
 **Bowing Motion**: A bowing motion can be simulated by applying a continuous force to a node on the string. The force can be modulated over time to simulate the changing pressure of a bow on the string.
 
-**Strumming Motion**: A strumming motion can be simulated by applying forces to multiple nodes on the string in quick succession. The time delta can be modulated to simulate different strumming speeds.
+**Strumming Motion**: A strumming motion can be simulated by applying forces to multiple nodes on the string in quick succession. The time interval can be modulated to simulate different strumming speeds.
 
 **Wave Overlay**: By applying particular "shaped" forces to multiple nodes on the string in a coordinated manner, one can create complex wave patterns that evolve over time. For example, applying a sinusoidal force to a node can create a wave that propagates along the string, and by modulating the frequency and amplitude of the force, one can create interesting timbral effects.
 
-**Continuous Modulation**: By continuously modulating the force applied to a node on the string, one can create evolving sounds that change over time. For example, applying a low-frequency oscillation (LFO) to the force can create a vibrato effect, while applying an envelope can create a dynamic sound that evolves from attack to decay.
+**Continuous Modulation**: By continuously modulating the force applied to a node on the string, one can create evolving sounds that change over time. For example, applying a low-frequency oscillation (LFO) to the force can create a tremolo-like effect or timbral variation, while applying an envelope can create a dynamic sound that evolves over time.
 
 You can imagine combining these, or coming up with totally new methods of excitation. The possibilities are vast, and the unique character of scanned synthesis allows for a wide range of expressive possibilities.
 
@@ -340,9 +344,9 @@ The unique character of scanned synthesis, and a core part of its concept, is th
 
 ## Scanning the String to Produce Sound
 
-This is where the "scanned" part of scanned synthesis comes in. Instead of directly outputting the vibrations of the string (as a physical string would), we sample the displacement of each node at regular intervals to produce a "dynamic wavetable".
+This is where the "scanned" part of scanned synthesis comes in. Instead of directly outputting the physical vibration of the string, we treat the displacement of each node as a "dynamic wavetable" and sample it at audio rate.
 
-To do this produce a pitched sound, the scanner completes n loops around the string at the desired fundamental frequency. One complete trip around the string corresponds to one waveform cycle. For example, if the scanning period is 1/440 seconds, the resulting sound will have a fundamental frequency of 440 Hz (the musical note A4).
+To produce a pitched sound, the scanner completes a loop around the string at the desired fundamental frequency. One complete trip around the string corresponds to one waveform cycle. For example, if the scanner completes one loop every 1/440 seconds, the resulting sound will have a fundamental frequency of 440 Hz, or A4. The string simulation itself may evolve more slowly, while the scanner reads from it at audio rate, causing the waveform shape to change over time.
 
 If the desired output frequency is \(f\), and the audio sample rate is \(f_s\), then the scan phase advances by:
 
@@ -358,7 +362,7 @@ $$
 y[n] = x\_{\text{interp}}(p)
 $$
 
-> Without interpolation, the output will have heavy aliasing. Interpolation is crucial for producing a smooth output.
+> Without interpolation, the output can have stair-stepping, harsh artefacts, and aliasing, especially with a small node count or high scan frequencies. Interpolation is crucial for producing a smooth output by estimating the string's displacement at non-integer positions between nodes.
 
 Then:
 
@@ -368,14 +372,14 @@ $$
 
 ## How It Differs From Wavetable Synthesis
 
-Scanned synthesis can look similar to wavetable synthesis at a surface level because both techniques read through a stored shape to produce a waveform. The difference is that a wavetable is usually static or moved through by explicit modulation, while a scanned synthesis waveform is the current state of a physical system.
+At a surface level, scanned synthesis can appear similar to wavetable synthesis because both techniques read through a table-like shape to produce a waveform. The _technique_ is similar, however Scanned Synthesis extends it by making the waveform the current state of a physical system. Wavetable synthesis, on the other hand, typically uses static waveforms that are precomputed and stored in memory.
 
 In other words, the waveform is not simply read from a static table. The table itself is ever-evolving based on the physical simulation of the string.
 
 ## Further Considerations
 
 - The string can be extended to two dimensions to create a membrane, which can produce more complex sounds.
-- The scanning path can be more complex than a simple loop, allowing for more interesting timbral possibilities. For example, the scanning path could be a random walk, or a path that is influenced by the state of the string itself, creating a feedback loop between the physical simulation and the scanning process.
+- The scanning path can be more complex than a simple loop, allowing for more interesting timbral possibilities. For example, the scanning path could be a pre-seeded random walk, or a path that is influenced by the state of the string itself, creating a feedback loop between the physical simulation and the scanning process.
 - The parameters of the string can be modulated in real-time to create dynamic changes in the sound.
 
 ## Appendix
@@ -411,7 +415,7 @@ $$
 F_\text{spring} = -k_e x
 $$
 
-The damper force is
+The damper force is:
 
 $$
 F_\text{damper} = -c_e x'
@@ -490,7 +494,7 @@ $$
 = k_n (x_{i-1} - 2x_i + x_{i+1}) - k_e x_i - c_e x_i'
 $$
 
-Subbing in Newton's second law gives us:
+Substituting Newton's second law gives us:
 
 $$
 m x_i'' = k_n (x_{i-1} - 2x_i + x_{i+1}) - k_e x_i - c_e x_i'

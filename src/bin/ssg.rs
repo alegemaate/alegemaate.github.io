@@ -75,7 +75,50 @@ async fn main() {
     }
     fs::write(&out, html).expect("write rendered html");
     println!("ssg: {url} -> {}", out.display());
+
+    if url != "/" {
+      let stub_dir = match url.strip_prefix('/') {
+        Some(rel) => dist.join(rel),
+        None => continue,
+      };
+      let stub = stub_dir.join("index.html");
+      fs::create_dir_all(&stub_dir).expect("mkdir -p stub");
+      fs::write(&stub, redirect_stub(&url)).expect("write redirect stub");
+      println!("ssg: {url}/ -> {} (redirect)", stub.display());
+    }
   }
+}
+
+fn redirect_stub(url: &str) -> String {
+  let target = html_escape(url);
+  format!(
+    "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"utf-8\">\
+     <link rel=\"canonical\" href=\"{SITE_ORIGIN}{target}\">\
+     <meta http-equiv=\"refresh\" content=\"0; url={target}\">\
+     <script>location.replace({js})</script>\
+     <title>Redirecting…</title></head><body></body></html>",
+    js = json_string(url),
+  )
+}
+
+fn json_string(s: &str) -> String {
+  let mut out = String::with_capacity(s.len() + 2);
+  out.push('"');
+  for c in s.chars() {
+    match c {
+      '"' => out.push_str("\\\""),
+      '\\' => out.push_str("\\\\"),
+      '\n' => out.push_str("\\n"),
+      '\r' => out.push_str("\\r"),
+      '<' => out.push_str("\\u003c"),
+      '>' => out.push_str("\\u003e"),
+      '&' => out.push_str("\\u0026"),
+      c if (c as u32) < 0x20 => out.push_str(&format!("\\u{:04x}", c as u32)),
+      c => out.push(c),
+    }
+  }
+  out.push('"');
+  out
 }
 
 fn html_escape(s: &str) -> String {

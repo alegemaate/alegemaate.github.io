@@ -64,7 +64,10 @@ async fn main() {
     let html = template
       .replacen(
         MOUNT_PLACEHOLDER,
-        &format!("<div id=\"app\">{body}</div>"),
+        &format!(
+          "<div id=\"app\" data-ssr-url=\"{}\">{body}</div>",
+          html_escape(&url),
+        ),
         1,
       )
       .replacen(CANONICAL_PLACEHOLDER, &canonical, 1)

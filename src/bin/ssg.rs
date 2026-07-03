@@ -25,7 +25,11 @@ async fn main() {
   }
 
   let mut routes: Vec<(String, PathBuf, String)> = vec![
-    ("/".into(), dist.join("index.html"), DEFAULT_DESCRIPTION.into()),
+    (
+      "/".into(),
+      dist.join("index.html"),
+      DEFAULT_DESCRIPTION.into(),
+    ),
     (
       "/projects".into(),
       dist.join("projects.html"),
